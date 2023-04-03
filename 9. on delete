@@ -1,0 +1,17 @@
+--On delete set null (all the areas where micheal scott was the supervisor got changed)
+DELETE FROM employee
+WHERE emp_id = 102;
+
+SELECT * FROM branch;
+
+SELECT * FROM employee;
+
+
+--on delete cascade
+
+DELETE FROM branch
+WHERE branch_id = 2;
+
+SELECT * FROM branch_supplier;
+
+--situations to use
