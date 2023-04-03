@@ -1,0 +1,48 @@
+--good for combining info from different tables to single result
+
+INSERT INTO branch VALUES(4, 'Buffalo', NULL, NULL);
+
+--Find all branches and the names of their managers
+SELECT employee.emp_id, employee.first_name, branch.branch_name
+FROM employee
+JOIN branch
+ON employee.emp_id = branch.mgr_id;
+
+--left join means first table (FROM)
+SELECT employee.emp_id, employee.first_name, branch.branch_name
+FROM employee
+LEFT JOIN branch
+ON employee.emp_id = branch.mgr_id;
+
+--right join means second table (Join)
+SELECT employee.emp_id, employee.first_name, branch.branch_name
+FROM employee
+RIGHT JOIN branch
+ON employee.emp_id = branch.mgr_id;
+
+--Full outer is a left join and a right joined combined
+
+
+--find names of employees who have sold over 30,000 to a single client
+--nested query
+SELECT employee.first_name, employee.last_name
+FROM employee
+WHERE employee.emp_id IN(
+
+SELECT works_with.emp_id
+FROM works_with
+WHERE total_sales > 30000
+);
+
+--Fina all clients who are handled by the branch that micheal scott manages
+--assume you know micheals ID
+SELECT client.client_name
+FROM client
+WHERE client.branch_id=(
+    SELECT branch.branch_id
+    FROM branch
+    WHERE branch.mgr_id = 102
+    LIMIT 1
+);
+
+
