@@ -1,0 +1,35 @@
+-- find all employees
+SELECT *
+FROM employee;
+
+-- find all clients
+SELECT *
+FROM client;
+
+--Find all employees ordered by salary
+SELECT *
+FROM employee
+ORDER BY salary DESC;
+
+--find all employees ordered by sex then name
+SELECT *
+FROM employee
+ORDER BY sex, first_name, last_name;
+
+--find the first 5 employees in the table
+SELECT *
+FROM employee
+LIMIT 5;
+
+--find the forename and surname  of all employees (just renames column from first_name to this)
+SELECT first_name AS forename, last_name AS surname
+FROM employee;
+
+--find out all the different genders
+SELECT DISTINCT sex
+FROM employee;
+
+--select distinct branch_id
+SELECT DISTINCT branch_id
+FROM employee;
+
